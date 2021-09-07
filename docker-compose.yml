@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  speechtotext:
+    image: speechtotext
+    build:
+      context: .
+      dockerfile: ./Dockerfile
