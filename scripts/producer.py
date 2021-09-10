@@ -2,11 +2,17 @@ from kafka import KafkaProducer
 from kafka.errors import KafkaError
 import json
 from json import dumps
+from time import sleep
+from json import dumps
 
-producer = KafkaProducer(bootstrap_servers=['b-1.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092'])
+producer = KafkaProducer(bootstrap_servers=['b-1.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092'],value_serializer=lambda x: 
+                         dumps(x).encode('utf-8'))
 
 # Asynchronous by default
-future = producer.send('test_file', b'raw_bytes')
+for e in range(1000):
+    data = {'number' : e}
+    future = producer.send('text_topic', value=data)
+    sleep(5)
 
 # Block for 'synchronous' sends
 try:
