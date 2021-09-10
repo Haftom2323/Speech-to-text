@@ -5,7 +5,7 @@ from json import dumps
 from time import sleep
 from json import dumps
 
-producer = KafkaProducer(bootstrap_servers=['b-1.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092'],value_serializer=lambda x: 
+producer = KafkaProducer(bootstrap_servers=['b-1.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092','b-2.demo-cluster-1.9q7lp7.c1.kafka.eu-west-1.amazonaws.com:9092'],value_serializer=lambda x: 
                          dumps(x).encode('utf-8'))
 
 # Asynchronous by default
